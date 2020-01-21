@@ -10,18 +10,11 @@ pipeline {
         sh 'tidy -q -e *.html'
       }
     } 
-    stage('Build docker image'){
+    stage('build docker image'){
 steps{
   script{
     image = docker.build(registry)
-   
-  }
-}
-    }
-    stage('Deploy docker image'){
-steps{
-  script{
-       docker.withRegistry('',registryCredential){
+    docker.withRegistry('',registryCredential){
       dockerImage.push()
     }  
   }
