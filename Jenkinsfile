@@ -13,8 +13,8 @@ pipeline {
         sh 'tidy -q -e *.html'
       }
     } 
-      stage('Building image') {
-    steps{
+ 
+    steps('Building image'){
       script {
          image = docker.build(registry)
          docker.withRegistry('', dockerhubCredentials) {
@@ -22,7 +22,7 @@ pipeline {
                     }
       }
     }
-  }  
+    
   
 
 
