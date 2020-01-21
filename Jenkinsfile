@@ -10,5 +10,15 @@ pipeline {
         sh 'tidy -q -e *.html'
       }
     } 
+    stage('build docker image'){
+steps{
+  script{
+    image = docker.build(registry)
+    docker.withRegistry('',registryCredential){
+      dockerImage.push()
+    }  
+  }
+}
+    }
      }
 }
