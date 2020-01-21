@@ -14,7 +14,7 @@ pipeline {
       }
     } 
  
-    steps('Building image'){
+    stage('Building image'){
       script {
          image = docker.build(registry)
          docker.withRegistry('', dockerhubCredentials) {
