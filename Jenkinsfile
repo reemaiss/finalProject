@@ -12,7 +12,17 @@ pipeline {
       steps {
         sh 'tidy -q -e *.html'
       }
-    }   
+    } 
+      stage('Building image') {
+    steps{
+      script {
+         image = docker.build(registry)
+         docker.withRegistry('', dockerhubCredentials) {
+         dockerImage.push()
+                    }
+      }
+    }
+  }  
   
 
 
