@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "rema2030/api:latest"
-    registryCredential = 'rema2030'
+    registryCredential = 'remadockerhub'
   }
      agent any 
      stages {
