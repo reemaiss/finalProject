@@ -13,8 +13,8 @@ pipeline {
     stage('build docker image'){
 steps{
   script{
-    image = docker.build("rema2030/api:latest")
-    docker.withRegistry('','remadockerhub'){
+    dockerImage = docker.build(registry)
+    docker.withRegistry('',registryCredential){
       dockerImage.push()
     }  
   }
