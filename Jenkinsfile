@@ -22,7 +22,7 @@ steps{
     }
     stage('Upload to AWS'){
       steps{
-        withAWS(region:'us-east-2',credentials:'remasAWS')
+        withAWS(credentials:'remasAWS',region:'us-east-2')
         sh "aws eks --region us-east-2 update-kubeconfig --name myCluster"
                     sh 'kubectl apply -f ./deployment.yml'
       }
