@@ -22,8 +22,8 @@ steps{
     }
     stage('DEPLOY to AWS'){
       steps{
-        withAWS(credentials:'remaFinal',region:'us-west-2'){
-            sh "aws eks --region us-west-2 update-kubeconfig --name myCluster"
+        withAWS(credentials:'remaFinal',region:'us-east-2'){
+            sh "aws eks --region us-east-2 update-kubeconfig --name myCluster"
             sh 'kubectl apply -f ./deployment.yml'
         }
       }
