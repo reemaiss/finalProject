@@ -115,7 +115,7 @@ Resources:
         Properties:
           Name: myCluster
           RoleArn: >-
-               arn:aws:iam::481078239420:role/jenkins
+               arn:aws:iam::481078239420:role/clusterRole
           ResourcesVpcConfig:
            SecurityGroupIds:
             - !Ref LBSecGroup
