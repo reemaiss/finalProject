@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "2030rema/api:latest"
-    registryCredential = 'remadockerhub'
+    registryCredential = '2030rema'
   }
      agent any 
      stages {
@@ -22,7 +22,7 @@ steps{
     }
     stage('DEPLOY to AWS'){
       steps{
-        withAWS(credentials:'remaFinal',region:'us-east-2'){
+        withAWS(credentials:'AWS2030rema',region:'us-east-2'){
             sh "aws eks --region us-east-2 update-kubeconfig --name myCluster"
             sh 'kubectl apply -f ./deployment.yml'
         }
