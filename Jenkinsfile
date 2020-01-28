@@ -23,6 +23,7 @@ steps{
     stage('DEPLOY to AWS'){
       steps{
         withAWS(region:'us-west-2',credentials:'AWS2030rema'){
+            sh "pip3 install awscli --upgrade"
             sh "aws --version"
             sh ".local/lib/python3.6/site-packages/aws eks --region us-west-2 update-kubeconfig --name myCluster"
             sh 'kubectl apply -f ./deployment.yml'
