@@ -20,7 +20,7 @@ steps{
   }
 }
     }
-    stage('DEPLOY to AWS'){
+    stage('Deploy to AWS'){
       steps{
         withAWS(region:'us-west-2',credentials:'AWS2030rema'){
             sh "pip3 install awscli --upgrade"
