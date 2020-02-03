@@ -44,5 +44,13 @@ steps{
                 }
          }
        } 
+          stage("Cleaning Docker up") {
+            steps {
+                script {
+                    sh "echo 'Cleaning Docker up'"
+                    sh "docker system prune"
+                }
+            }
+        }
      }
 }
