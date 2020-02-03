@@ -31,5 +31,18 @@ steps{
       }
 
     }
+       
+       stage('Staging service'){
+         steps{
+               withAWS(region:'us-west-2',credentials:'AWS2030rema')  {
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2030rema', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+                        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        sh 'kubectl apply -f ./staging-service.json'
+                        sh 'kubectl get pods'
+                        sh 'kubectl describe service staginglb'
+                    }
+                }
+         }
+       } 
      }
 }
